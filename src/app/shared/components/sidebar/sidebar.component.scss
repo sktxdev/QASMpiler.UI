@@ -1,0 +1,39 @@
+ul,li {
+    list-style: none;
+    list-style-position: outside;
+    margin: 5;
+    padding: 0;
+}
+
+ul {
+    counter-reset: foo;
+    display: table;
+}
+
+li {
+    list-style: none;
+    counter-increment: foo;
+    display: table-row;
+}
+
+li::before {
+    display: table-cell;
+    text-align: right;
+    padding-right: .3em;
+}
+
+mat-sidenav-container {
+    background-color:darkslategray;
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+mat-sidenav-container {
+    color: white;
+}
