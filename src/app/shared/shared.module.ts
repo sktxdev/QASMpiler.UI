@@ -6,11 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule} from '@angular/material/sidenav';
 
-
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import {
+} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule,
+
+
+
   ],
   exports: [
     HeaderComponent,
