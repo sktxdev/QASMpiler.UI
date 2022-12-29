@@ -1,1 +1,81 @@
-<p>Patients</p>
+<div>
+    <pre>
+        // Select the language - there are two versions, 2 and 3, but 3 is not well developed or widely used
+        // We almost certainly need to focus on 2
+        OPENQASM 2.0;
+
+        // Like a C header file. It has the definitions of the gates (the primitive operations).
+        // I believe you can find it on github
+        include "qelib1.inc";
+
+        // Allocation of classical bits - like C
+        creg c0[1];
+        creg c1[1];
+        creg c2[1];
+        creg c3[1];
+        creg c4[1];
+        creg c5[1];
+
+        // Allocate six quantum bits
+        qreg q0[6];
+
+        // Hadamard gate.
+        h q0[0];
+
+        // Controlled not gate, a.k.a. CNOT.
+        cx q0[0],q0[2];
+
+        h q0[1];
+        cx q0[1],q0[3];
+
+        y q0[1];
+        h q0[1];
+
+        // This is not a gate operation - it is a measurement.
+        measure q0[1] -> c0;
+
+        // This is a special operation for trapped ion computers. It resets the qbit
+        reset q0[1];
+
+        // Conditional operation. I'm not sure what json you should emit. Maybe JSON is not the best
+        // output language
+        if (c0==1) x q0[1];
+
+        // More
+
+        measure q0[0] -> c1;
+        reset q0[0];
+        if (c1==1) x q0[0];
+
+        // alice 2
+        h q0[0];
+        cx q0[1],q0[0];
+        h q0[1];
+
+        measure q0[1] -> c2;
+        reset q0[1];
+        if (c2==1) x q0[1];
+
+        // bob 0
+        y q0[3];
+        h q0[3];
+
+        measure q0[3] -> c3;
+        reset q0[3];
+        if (c3==1) x q0[3];
+
+        // bob 1
+        h q0[3];
+        y q0[3];
+        x q0[2];
+        measure q0[2] -> c4;
+        reset q0[2];
+        if (c4==1) x q0[2];
+
+        // bob 2
+        x q0[2];
+        h q0[3];
+        cx q0[2],q0[3];
+        measure q0[3] -> c5;
+    </pre>
+</div>
